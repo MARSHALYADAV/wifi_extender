@@ -43,8 +43,6 @@ This project demonstrates a WiFi extender with automatic hotspot reconfiguration
 
    # Detailed Setup and Usage Guide
 
-This guide explains how to set up and use the WiFi Extender & Hotspot Switch project from scratch. It covers installing the Arduino IDE, adding ESP8266 board support, installing required libraries, wiring the hardware, and configuring the project.
-
 ## Table of Contents
 
 - [Prerequisites](#prerequisites)
@@ -118,6 +116,49 @@ This guide explains how to set up and use the WiFi Extender & Hotspot Switch pro
 
 - **ESP8266 Board:**
   - Ensure the board is powered (via USB) and properly connected to your computer for code uploading.
+## LCD Display Details
+
+The project uses an I2C-connected LCD to provide real-time status updates. Below is a breakdown of the information you can expect to see on the display during different phases of operation:
+
+- **Startup:**  
+  - **Line 1:** "WiFi Extender"  
+  - **Line 2:** "Starting..."  
+  This indicates that the device is booting up and initializing its components.
+
+- **Scanning for WiFi:**  
+  - **Line 1:** "Scanning for"  
+  - **Line 2:** Displays the primary network SSID (e.g., "YOUR_PRIMARY_WIFI_SSID")  
+  The device scans for the primary WiFi network and updates the display with the target SSID.
+
+- **Waiting for Network:**  
+  - **Line 1:** "Waiting for"  
+  - **Line 2:** Displays the primary network SSID  
+  If the primary network is not detected immediately, this message appears while the device continues to scan.
+
+- **Connecting to WiFi:**  
+  - **Line 1:** "Connecting to"  
+  - **Line 2:** Displays the SSID being connected to  
+  This message appears once the device starts the connection process.
+
+- **Connected Status:**  
+  - **Line 1:** "Connected:"  
+  - **Line 2:** Shows the assigned IP address (e.g., "192.168.x.x")  
+  Once a successful connection is made, the LCD displays the IP address of the ESP8266.
+
+- **Hotspot (SoftAP) Configuration:**  
+  - **Line 1:** "Hotspot:"  
+  - **Line 2:** Displays the AP name (e.g., "AP_PRIMARY" or "AP_SECONDARY")  
+  After connecting to the WiFi network, the device configures its own hotspot. This message indicates the name of the active SoftAP.
+
+- **NAT Activation:**  
+  - **Line 1:** "NAT active on"  
+  - **Line 2:** Displays the AP name  
+  This confirms that NAT (Network Address Translation) has been successfully initialized and is active on the hotspot.
+
+- **Reconnection Attempts:**  
+  - **Line 1:** "WiFi lost!" or "Reconnect"  
+  - **Line 2:** Displays status messages like "Scanning nets..." or "failed"  
+  If the station connection is lost, the LCD updates with reconnection status messages, guiding you through the reconnection process.
 
 ## Project Configuration and Usage
 
